@@ -13,9 +13,9 @@ export class NoteComponent implements OnInit {
     text: '',
   };
   @Output() noteChange = new EventEmitter<Notes>();
+  isFlag: boolean = true;
 
   constructor(public noteService: NoteService) {}
-  isFlag: boolean = true;
 
   onClickIsFlag() {
     this.isFlag = !this.isFlag;
@@ -26,6 +26,7 @@ export class NoteComponent implements OnInit {
   }
   editNote(id: number, text: string) {
     this.noteService.editNote(id, text);
+    this.isFlag = true;
   }
   ngOnInit(): void {}
 }
